@@ -492,6 +492,7 @@ where
                 state.paragraph.raw(),
                 crate::text::Style {
                     color: style.text_color,
+                    ..crate::text::Style::default()
                 },
                 viewport,
             );

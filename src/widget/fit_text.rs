@@ -234,7 +234,10 @@ where
     {
         let color = color.map(Into::into);
 
-        self.style(move |_theme| Style { color })
+        self.style(move |_theme| Style {
+            color,
+            ..Default::default()
+        })
     }
 
     /// Sets the style class of the [`FitText`].

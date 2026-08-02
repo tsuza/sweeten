@@ -851,6 +851,8 @@ where
 
 #[cfg(test)]
 mod tests {
+    use iced_core::shell;
+
     use super::*;
     use crate::core::widget::tree::Tree;
     use crate::core::{Element, Event, Never, Theme};
@@ -913,7 +915,7 @@ mod tests {
         let viewport = Rectangle::with_size(Size::new(1024.0, 768.0));
         let waker = core::shell::Waker::noop();
         let window = crate::core::window::Headless;
-        let mut messages: Vec<Never> = vec![];
+        let mut messages = shell::Bus::new();
         let mut shell = Shell::new(&window, waker, &mut messages);
 
         widget.update(

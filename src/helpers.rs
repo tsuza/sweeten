@@ -95,8 +95,8 @@ where
 /// [`on_focus`]: TextInput::on_focus
 /// [`on_blur`]: TextInput::on_blur
 pub fn text_input<'a, Message, Theme, Renderer>(
-    placeholder: &str,
-    value: &str,
+    placeholder: &'a str,
+    value: &'a str,
 ) -> TextInput<'a, Message, Theme, Renderer>
 where
     Message: Clone,

@@ -27,11 +27,11 @@ iced_test.version = "0.15.0-dev"
 tokio = { version = "1", features = ["time"] }
 
 [patch.crates-io]
-iced = { git = "https://github.com/iced-rs/iced.git", branch = "master" }
-iced_core = { git = "https://github.com/iced-rs/iced.git", branch = "master" }
-iced_runtime = { git = "https://github.com/iced-rs/iced.git", branch = "master" }
-iced_widget = { git = "https://github.com/iced-rs/iced.git", branch = "master" }
-iced_test = { git = "https://github.com/iced-rs/iced.git", branch = "master" }
+iced = { git = "https://github.com/tsuza/iced.git", branch = "selectable_text" }
+iced_core = { git = "https://github.com/tsuza/iced.git", branch = "selectable_text" }
+iced_runtime = { git = "https://github.com/tsuza/iced.git", branch = "selectable_text" }
+iced_widget = { git = "https://github.com/tsuza/iced.git", branch = "selectable_text" }
+iced_test = { git = "https://github.com/tsuza/iced.git", branch = "selectable_text" }
 
 # Uncomment to test against local iced checkout
 # [patch.crates-io]

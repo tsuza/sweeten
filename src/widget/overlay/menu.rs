@@ -315,6 +315,7 @@ where
 #[derive(Debug)]
 pub struct State {
     tree: Tree,
+    id: Id,
 }
 
 impl State {
@@ -322,6 +323,7 @@ impl State {
     pub fn new() -> Self {
         Self {
             tree: Tree::empty(),
+            id: Id::unique(),
         }
     }
 }
@@ -515,7 +517,7 @@ where
             None
         };
 
-        let id = Id::unique();
+        let id = state.id.clone();
 
         let mut list = Scrollable::new(List {
             values,

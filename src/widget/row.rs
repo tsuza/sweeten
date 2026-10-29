@@ -732,7 +732,7 @@ where
                 } => {
                     shell.request_redraw();
 
-                    let cursor = cursor.land();
+                    let cursor = cursor.observe();
 
                     if let Some(cursor_position) = cursor.position() {
                         animations.with_capacity(self.children.len());
@@ -824,9 +824,11 @@ where
 
                         animations.with_capacity(self.children.len());
 
-                        let cursor = cursor.land();
+                        let cursor = cursor.observe();
 
-                        if let Some(cursor_position) = cursor.position() {
+                        if let Some(cursor_position) =
+                            cursor.observe().position()
+                        {
                             let target_index = self.compute_target_index(
                                 cursor_position,
                                 &tree.children,
@@ -1408,12 +1410,21 @@ where
         tree.size = size.expand(self.row.padding);
 
         if self.row.id.is_some() {
+            let bounds = tree
+                .children
+                .iter()
+                .map(|child| {
+                    Rectangle::new(
+                        Point::new(child.translation.x, child.translation.y),
+                        child.size,
+                    )
+                })
+                .collect::<Vec<_>>();
+
             let state = tree.state.downcast_mut::<WidgetState>();
             state.positions.clear();
-            for (i, _) in tree.children.iter().enumerate() {
-                let point = Point::new(tree.translation.x, tree.translation.y);
-                let bounds = Rectangle::new(point, tree.size);
 
+            for (i, bounds) in bounds.into_iter().enumerate() {
                 state.positions.set(i, bounds);
             }
         }

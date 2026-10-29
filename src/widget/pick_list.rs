@@ -1234,6 +1234,7 @@ where
                 &self.menu_class,
             )
             .width(bounds.width)
+            .height(self.menu_height)
             .selected(selected_index)
             .check_indicator(self.check_indicator)
             .anchor(self.anchor)
